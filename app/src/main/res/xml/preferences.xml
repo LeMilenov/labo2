@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="settings">
+        <EditTextPreference
+            android:defaultValue="false"
+            android:key="@string/server_address_value"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="@string/server_address_value"
+            android:title="@string/Server_adress" />
+        <EditTextPreference
+            android:defaultValue="Default value"
+            android:key="@string/web_app_value"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="@string/web_app_value"
+            android:title="@string/web_app_title" />
+        <EditTextPreference
+            android:defaultValue="Default value"
+            android:key="@string/web_app_port_value"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="@string/web_app_port_value"
+            android:title="@string/web_app_port_title" />
+        <EditTextPreference
+            android:defaultValue="Default value"
+            android:key="edit_text_preference_1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Synchro Port" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:disableDependentsState="false"
+            android:key="@string/stay_logged_in_value"
+            android:persistent="false"
+            android:summaryOff="ne restera pas connecter"
+            android:summaryOn="restera connecter"
+            android:title="@string/stay_logged_in_title" />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -71,11 +71,11 @@ public abstract class CustomDatabaseRoom extends RoomDatabase {
             final int banner3 = (int) mBannerDao.insert(b3);
             final int banner4 = (int) mBannerDao.insert(b4);
 
-            Store s1 = new Store("IGA AUTEUIL","1234 rue aa", "www.iga.asdasd",banner1);
+            Store s1 = new Store("IGA AUTEUIL","1234 rue aa", "www.iga.asdasd",mBannerDao.getIdByBannerName("IGA"));
 //            Store s2 = new Store("IGA CHOMEDEY","1234 rue bb", "www.iga.asdasd",b.getId());
-            Store s3 = new Store("Metro","1234 rue ccc", "www.metro.asdasd",banner2);
-            Store s4 = new Store("Maxi","1234 rue ddd", "www.maxi.asdasd",banner3);
-            Store s5 = new Store("Wall mart","1234 rue fff", "www.wallmart.asdasd",banner4);
+            Store s3 = new Store("Metro","1234 rue ccc", "www.metro.asdasd",mBannerDao.getIdByBannerName("Metro"));
+            Store s4 = new Store("Maxi","1234 rue ddd", "www.maxi.asdasd",mBannerDao.getIdByBannerName("Maxi"));
+            Store s5 = new Store("Wall mart","1234 rue fff", "www.wallmart.asdasd",mBannerDao.getIdByBannerName("WallMart"));
 
             mStoreDao.insert(s1,s3,s4,s5);
 

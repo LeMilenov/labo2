@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Labo2</string>
+    <string name="navigation_drawer_open"> Ouverture du drawer</string>
+    <string name="navigation_drawer_close"> Fermeture du drawer</string>
+    <string name="enable_notification">enable les notifications</string>
+    <string name="notification">notifications</string>
+    <string name="data_title">data (titre)</string>
+    <string name="data">data</string>
+    <string name="save_data_summary">sauvegarde de l information ( description )</string>
+    <string name="save_data_title">sauvegarde d information (titre) </string>
+    <string name="Server_adress">Server Address</string>
+    <string name="server_address_value">markit.nomadlogicapp.com</string>
+    <string name="web_app_value">bellemont_powell</string>
+    <string name="web_app_title">Web App</string>
+    <string name="web_app_port_title">Web App Port</string>
+    <string name="web_app_port_value">80</string>
+    <string name="stay_logged_in_title">Stay Logged In</string>
+    <string name="stay_logged_in_value">true</string>
+    <string name="server_address_title" />
 </resources>

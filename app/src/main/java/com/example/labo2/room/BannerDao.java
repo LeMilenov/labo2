@@ -16,6 +16,8 @@ public interface BannerDao {
     @Query("SELECT * FROM banner_table WHERE banner_id = :id LIMIT 1")
     Banner getBanner(int id);
 
+    @Query("SELECT banner_id FROM banner_table WHERE banner_name = :name")
+    int getIdByBannerName(String name);
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Banner ...banners);
 

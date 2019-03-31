@@ -2,6 +2,8 @@ package com.example.labo2.fragment;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.labo2.R;
+import com.example.labo2.databinding.ActivityStoreBinding;
 import com.example.labo2.models.StoresViewModel;
 import com.example.labo2.room.Banner;
 import com.example.labo2.room.CustomDatabaseRoom;
@@ -24,10 +27,8 @@ public class StoreFragment  extends Fragment {
     public final static String ARG_ID = "id";
     int idCourant = -1;
     StoresViewModel storesViewModel;
-    TextView labelName = null;
-    TextView labelAddresse = null;
-    TextView labelSite = null;
-
+    ActivityStoreBinding binding;
+//    private Store storeCourant = null;
 
     @Nullable
     @Override
@@ -36,46 +37,37 @@ public class StoreFragment  extends Fragment {
         if(savedInstanceState != null){
             idCourant = savedInstanceState.getInt(ARG_ID);
         }
-        View viewCourante = inflater.inflate(R.layout.activity_store, container, false);
-        labelName = viewCourante.findViewById(R.id.labelName);
-        labelAddresse = viewCourante.findViewById(R.id.labelAddresse);
-        labelSite = viewCourante.findViewById(R.id.labelSite);
+//        aller chercher l id passer en argument
+        Bundle args = getArguments();
+        if (args != null) {
+            // Set article based on argument passed in
+            getStore(args.getInt(ARG_ID));
+        } else if (idCourant != -1) {
+            // Set article based on saved instance state defined during onCreateView
+            getStore(idCourant);
+        }
+//        bind l objet store a la vue
+        binding = DataBindingUtil.inflate( inflater, R.layout.activity_store, container, false);
+        View viewCourante = binding.getRoot();
 
         return viewCourante;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
+    public void getStore(int id) {
 
-        Bundle args = getArguments();
-        if (args != null) {
-            // Set article based on argument passed in
-            mettreAJourInfoView(args.getInt(ARG_ID));
-        } else if (idCourant != -1) {
-            // Set article based on saved instance state defined during onCreateView
-            mettreAJourInfoView(idCourant);
-        }
-    }
-    public void mettreAJourInfoView(int id) {
         storesViewModel = ViewModelProviders.of(this).get(StoresViewModel.class);
         storesViewModel.getAllStoresForBanner(id).observe(this, new Observer<List<Store>>(){
             @Override
             public void onChanged(@Nullable List<Store> stores){
-//                faire pour afficher les infos dans un listAdapter
-                if(labelName != null) {
-
-                    labelName.setText(stores.get(0).getName());
-                    labelAddresse.setText(stores.get(0).getAddress());
-                    labelSite.setText(stores.get(0).getWebsite());
-
+                if(stores.get(0) != null){
+                    binding.setStore(stores.get(0));
                 }
-
             }
         });
         idCourant = id;
-
     }
+
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
